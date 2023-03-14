@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf835b5d-66d4-47a5-b739-bc84766ba171" name="Changes" comment="first">
+    <list default="true" id="bf835b5d-66d4-47a5-b739-bc84766ba171" name="Changes" comment="econ lowdown start">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SourceAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SourceAccess.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +67,8 @@
       <updated>1678568065611</updated>
       <workItem from="1678568066875" duration="2329000" />
       <workItem from="1678735426771" duration="324000" />
-      <workItem from="1678810594131" duration="636000" />
+      <workItem from="1678810594131" duration="3848000" />
+      <workItem from="1678821979233" duration="567000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1678568557762</created>
@@ -75,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678568557762</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="econ lowdown start">
+      <created>1678811530123</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678811530123</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +103,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
-    <option name="LAST_COMMIT_MESSAGE" value="first" />
+    <MESSAGE value="econ lowdown start" />
+    <option name="LAST_COMMIT_MESSAGE" value="econ lowdown start" />
   </component>
 </project>

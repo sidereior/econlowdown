@@ -34,10 +34,18 @@
             <version>${slf4jVersion}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>htmlunit-driver</artifactId>
-            <version>3.62.0</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20230227</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20090211</version>
         </dependency>
 
         <dependency>

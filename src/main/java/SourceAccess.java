@@ -1,15 +1,18 @@
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
+import org.json.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.io.FileUtils;
-import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.commons.io.IOUtils;
 import org.eclipse.jgit.api.*;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.internal.storage.file.FileRepository;
@@ -42,6 +45,29 @@ public class SourceAccess {
         publishChanges();
     }
 
+    public static String chatGPT(String text) throws Exception {
+        String url = "https://api.openai.com/v1/completions";
+        HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Authorization", "Bearer YOUR-API-KEY");
+
+        JSONObject data = new JSONObject();
+        data.put("model", "text-davinci-003");
+        data.put("prompt", text);
+        data.put("max_tokens", 4000);
+        data.put("temperature", 1.0);
+
+        con.setDoOutput(true);
+        con.getOutputStream().write(data.toString().getBytes());
+
+        String output = new BufferedReader(new InputStreamReader(con.getInputStream())).lines()
+                .reduce((a, b) -> a + b).get();
+
+        return new JSONObject(output).getJSONArray("choices").getJSONObject(0).getString("text");
+    }
+
     public static void publishChanges()
     {
         //double secondRuntime = System.currentTimeMillis()/1000;
@@ -58,7 +84,7 @@ public class SourceAccess {
                 ChromeDriver driver = new ChromeDriver(options);
                 driver.manage().window().setPosition(new Point(-20000, 0));
                 driver.get("https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fyammerlakeshore%2Fyammerlakeshore.github.io");
-                //Opens login page for github pages project at github.com/yammerlakeshore/yammerlakeshore.github.io.
+
                 List<WebElement> someElements = driver.findElements(By.id("login_field"));
                 //Locates login field.
                 for (WebElement anElement : someElements) {
@@ -370,14 +396,24 @@ public class SourceAccess {
                 //If this fails, you likely don't have a network connection.
             }
             //On the yammer login page now, locates the input button for your username.
-            List<WebElement> someElements = driver.findElements(By.cssSelector("input"));
+            List<WebElement> someElements = driver.findElements(By.xpath("/html/body/div/form/div[2]/div/p/text()"));
+            String thisElement = "";
             for (WebElement anElement : someElements) {
-                if (anElement.getAttribute("name").equals("loginfmt")) {
-                    anElement.sendKeys(username);
-                    //Sends username to login box on yammer login page.
-                }
+                thisElement = anElement.getText();
             }
-            //Locates the submit username button.
+            List<WebElement> newElements = driver.findElements(By.xpath("/html/body/div/form/div[2]/ol/li[1]/label"));
+            for (WebElement anElement : newElements) {
+
+            }
+            //now we shold call the other method to get the correct asnwer
+            //CHAT GPT HERE
+            //need to copy the choices
+            
+            String correct = chatGPT(thisElement);
+
+
+
+
             List<WebElement> someElements2 = driver.findElements(By.id("idSIButton9"));
             for (WebElement anElement : someElements2) {
                 if (anElement.getAttribute("type").equals("submit")) {
