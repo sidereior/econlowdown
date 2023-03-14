@@ -8,7 +8,6 @@ import java.util.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.eclipse.jgit.api.*;
@@ -34,7 +33,7 @@ public class SourceAccess {
 
     public static void main(String[] args) {
         //First part of the program, gets the post info from Yammer and adds it to a file.
-        getYammerFeed();
+        getLowdownFeed();
 
         //Second part of the program, parses HTML text file, uses new.html as template, writes to index.html with changes.
         parseHtml();
@@ -292,7 +291,7 @@ public class SourceAccess {
     }
 
 
-    public static void getYammerFeed()
+    public static void getLowdownFeed()
     {
         //First part of the program, logs onto yammer through Chrome browser, gets post and img html source code, and saves it to a file.
         String currTime = Instant.now().toString();
@@ -361,8 +360,9 @@ public class SourceAccess {
             int year = localDate.getYear();
             int month = localDate.getMonthValue();
             int day = localDate.getDayOfMonth();
-            //Goes to Yammer Microsoft login page
-            driver.get("https://login.microsoftonline.com/common/oauth2/authorize?client_id=00000005-0000-0ff1-ce00-000000000000&domain_hint=lakeshore.com&msafed=0&nonce=3ff7b976fcfdf4036f7f800c00b067f9555977d10dd53d00112f0565f9a8e79c&redirect_uri=https%3A%2F%2Fpersona.yammer.com%2Foffice_sessions%3F&resource=https%3A%2F%2Fwww.yammer.com%2F&response_mode=form_post&response_type=id_token+code&scope=open_id&site_id=501393&state=1f5398bb9ab572287b8c42027101dc60caba89709b2d8787c963835a1a5474dc&sso_reload=true");
+            //Goes to econlowdown page, requries url string to have https
+            driver.get("https://www.econlowdown.org/v3/student/economic-lowdown-audio-series-episode-16-elasticity-of-demand/section/2");
+            //change this for the input url
             try {
                 Thread.sleep(2500);
             } catch (Exception e) {
